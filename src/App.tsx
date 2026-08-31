@@ -4,6 +4,7 @@ import Index from "./pages/Index";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import MobileQuotePrompt from "@/components/MobileQuotePrompt";
 
 const PortfolioPage = lazy(() => import("./pages/PortfolioPage"));
 const LandingPage = lazy(() => import("./pages/LandingPage"));
@@ -21,6 +22,7 @@ const App = () => (
             <Route path="/portfolio" element={<PortfolioPage />} />
             <Route path="/free-quote" element={<LandingPage />} />
           </Routes>
+          <MobileQuotePrompt />
         </Suspense>
       </BrowserRouter>
     </TooltipProvider>

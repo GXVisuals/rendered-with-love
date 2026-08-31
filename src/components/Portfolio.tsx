@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/dialog";
 import { ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { openContactFromCta } from "@/lib/contactPrompt";
 
 // --- IMAGE IMPORTS ---
 import portfolio1 from "@/assets/portfolio-1.webp";
@@ -501,9 +502,7 @@ const Portfolio = () => {
 
         <div className="mt-16 text-center">
           <button
-            onClick={() => {
-              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-            }}
+            onClick={openContactFromCta}
             className="group relative inline-flex items-center justify-center px-12 py-4 font-body text-xs tracking-[0.3em] uppercase transition-all duration-500 bg-[#00bad3] text-white rounded-full hover:bg-[#00bad3]/90 hover:shadow-[0_0_30px_rgba(0,186,211,0.4)] transform hover:-translate-y-1"
           >
             <span className="relative z-10 font-bold">{t("CONTACT US", "CONTACT US")}</span>

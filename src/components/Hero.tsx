@@ -3,6 +3,7 @@ import { ArrowDown } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { openContactFromCta } from "@/lib/contactPrompt";
 import hero1 from "@/assets/portfolio-8.webp";
 import hero2 from "@/assets/portfolio-29.webp";
 import hero3 from "@/assets/portfolio-24.webp";
@@ -62,7 +63,7 @@ const Hero = () => {
         </h1>
 
         <p className="font-body text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-up">
-          {t('hero_description', 'Photorealistic 3D renders that help you make the right decisions — before construction begins.')}
+          {t('hero_description', 'Photorealistic 3D renders that help you make the right decisions before construction begins.')}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up">
@@ -74,7 +75,7 @@ const Hero = () => {
           <Button
             variant="hero"
             size="xl"
-            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={openContactFromCta}
             className="glass-morphism"
           >
             {t('hero_btn_start', 'Get a Free Quote Today')}

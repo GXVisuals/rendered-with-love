@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { ArrowRight } from "lucide-react";
+import { openContactFromCta } from "@/lib/contactPrompt";
 import portfolio1 from "@/assets/portfolio-1.webp";
 import portfolio32 from "@/assets/portfolio-32.webp";
 
@@ -97,7 +98,7 @@ const CaseStudies = () => {
             Let's transform your architectural concepts into photorealistic experiences that captivate your clients.
           </p>
           <button 
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={openContactFromCta}
             className="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-full text-xs font-bold tracking-widest uppercase hover:bg-primary/90 transition-all transform hover:scale-105"
           >
             Start a Project <ArrowRight size={16} />

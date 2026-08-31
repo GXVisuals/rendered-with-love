@@ -4,6 +4,7 @@ import { Instagram, Phone, Menu, X } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { NavLink } from "@/components/NavLink";
+import { isMobileViewport, openMobileContactPrompt } from "@/lib/contactPrompt";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -24,6 +25,13 @@ const Header = () => {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     setMobileOpen(false);
+
+    if (id === "contact" && isMobileViewport()) {
+      e.preventDefault();
+      openMobileContactPrompt();
+      return;
+    }
+
     if (location.pathname === "/") {
       e.preventDefault();
       document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -51,7 +59,8 @@ const Header = () => {
 
           {/* Logo / Brand */}
           <Link to="/" onClick={handleLogoClick} className="flex items-center gap-2">
-            <img src="/logo.png" alt="GX Visuals Logo" className="h-8 w-auto" />
+            <img src="/mobile-logo.webp" alt="GX Visuals Logo" className="h-9 w-9 object-contain sm:hidden" />
+            <img src="/logo.png" alt="GX Visuals Logo" className="hidden h-8 w-auto sm:block" />
             <span className="font-display text-2xl font-semibold text-foreground tracking-tight hidden sm:inline-block">
               GX<span className="text-primary">VISUALS</span>
             </span>

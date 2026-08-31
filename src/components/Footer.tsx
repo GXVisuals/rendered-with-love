@@ -1,11 +1,18 @@
 import { Instagram, Facebook, Phone, Music2, ArrowUp } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { isMobileViewport, openMobileContactPrompt } from "@/lib/contactPrompt";
 
 const Footer = () => {
   const { t } = useTranslation();
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
+
+    if (id === "contact" && isMobileViewport()) {
+      openMobileContactPrompt();
+      return;
+    }
+
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });

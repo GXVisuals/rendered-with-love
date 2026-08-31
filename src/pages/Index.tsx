@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import { openMobileContactPrompt } from "@/lib/contactPrompt";
 
 // Updated import to use valid existing images
 import portfolio1 from "@/assets/portfolio-1.webp";
@@ -126,13 +127,13 @@ const Index = () => {
       {/* STICKY MOBILE CTA */}
       <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden">
         <a
-          href="#contact"
-          onClick={(e) => {
-            e.preventDefault();
-            document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-          }}
-          className="flex items-center justify-center w-full bg-[#00bad3] text-white py-4 font-body text-xs tracking-[0.25em] uppercase font-bold shadow-[0_-4px_20px_rgba(0,186,211,0.3)]"
-        >
+        href="#contact"
+        onClick={(e) => {
+          e.preventDefault();
+          openMobileContactPrompt();
+        }}
+        className="flex items-center justify-center w-full bg-[#00bad3] text-white py-4 font-body text-xs tracking-[0.25em] uppercase font-bold shadow-[0_-4px_20px_rgba(0,186,211,0.3)]"
+      >
           Get a Free Quote Today →
         </a>
       </div>

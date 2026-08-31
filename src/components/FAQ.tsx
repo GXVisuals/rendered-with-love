@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Plus, Minus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { openContactFromCta } from "@/lib/contactPrompt";
 
 const faqs = [
   {
@@ -108,7 +109,7 @@ const FAQ = () => {
             {t("faq_cta_text", "Still have questions? We're happy to help.")}
           </p>
           <button
-            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={openContactFromCta}
             className="inline-flex items-center gap-2 bg-[#00bad3] text-white px-8 py-3 rounded-full font-body text-xs tracking-widest uppercase hover:bg-[#00bad3]/90 hover:shadow-[0_0_30px_rgba(0,186,211,0.4)] transition-all duration-300 transform hover:-translate-y-1"
           >
             Contact Us
