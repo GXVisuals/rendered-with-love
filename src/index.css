@@ -41,4 +41,11 @@
     font-family: var(--font-display); 
     @apply font-medium tracking-tight;
   }
+  button[class*="fixed"][class*="bottom-"],
+div[class*="fixed"][class*="bottom-"]:not(:has(a[href*="wa.me"])) {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
+
