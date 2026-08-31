@@ -14,13 +14,11 @@ const heroImages = [hero1, hero2, hero3, hero4, hero5];
 const Hero = () => {
   const { t } = useTranslation();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setIsLoaded(false);
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
-    }, 3000);
+    }, 5000);
     return () => clearInterval(timer);
   }, []);
 
@@ -33,15 +31,20 @@ const Hero = () => {
 
       {/* Background Images */}
       <div className="absolute inset-0 z-0">
-        <img
-          src={heroImages[currentImageIndex]}
-          alt="GXVISUALS portfolio render"
-          className={`w-full h-full object-cover transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-          onLoad={() => setIsLoaded(true)}
-        />
+        {heroImages.map((image, index) => (
+          <img
+            key={image}
+            src={image}
+            alt="GXVISUALS portfolio render"
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity ease-in-out ${
+              index === currentImageIndex ? "opacity-100" : "opacity-0"
+            }`}
+            style={{ transitionDuration: "1800ms" }}
+            loading={index === 0 ? "eager" : "lazy"}
+            fetchPriority={index === 0 ? "high" : "auto"}
+            decoding="async"
+          />
+        ))}
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
       </div>
 
@@ -58,13 +61,8 @@ const Hero = () => {
           <span className="text-gradient">{t('hero_title_part2', 'Before It\'s Built')}</span>
         </h1>
 
-        <p className="font-body text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-4 animate-fade-up">
+        <p className="font-body text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-up">
           {t('hero_description', 'Photorealistic 3D renders that help you make the right decisions — before construction begins.')}
-        </p>
-
-        {/* Trust line */}
-        <p className="font-body text-sm text-primary/80 tracking-wide mb-10 animate-fade-up">
-          {t('hero_trust', '✦ 35 Projects Completed · Cyprus & Greece · Fast Delivery')}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up">
@@ -81,6 +79,13 @@ const Hero = () => {
           >
             {t('hero_btn_start', 'Get a Free Quote Today')}
           </Button>
+        </div>
+
+        {/* Trust line */}
+        <div className="mx-auto mt-6 inline-flex max-w-full items-center justify-center rounded-lg border border-white/15 bg-black/35 px-5 py-3 backdrop-blur-md shadow-[0_12px_40px_rgba(0,0,0,0.22)] animate-fade-up">
+          <p className="font-body text-xs sm:text-sm text-primary tracking-wide">
+            {t('hero_trust', '✦ 35 Projects Completed · Cyprus & Greece · Fast Delivery')}
+          </p>
         </div>
 
       </div>

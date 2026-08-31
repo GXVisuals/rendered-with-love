@@ -115,7 +115,7 @@ const Index = () => {
         href="https://wa.me/35795115014"
         target="_blank"
         rel="noreferrer"
-        className="fixed bottom-24 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] shadow-lg hover:scale-110 transition-transform duration-300"
+        className="fixed bottom-16 right-4 md:bottom-6 md:right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] shadow-lg hover:scale-110 transition-transform duration-300"
         aria-label="Contact us on WhatsApp"
       >
         <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
