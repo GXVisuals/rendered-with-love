@@ -30,7 +30,9 @@
 }
 
 @layer base {
-  * { @apply border-border; }
+  * { 
+    @apply border-border; 
+  }
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-body);
@@ -41,7 +43,10 @@
     font-family: var(--font-display); 
     @apply font-medium tracking-tight;
   }
-  button[class*="fixed"][class*="bottom-"],
+}
+
+/* Force hide fixed scroll buttons */
+button[class*="fixed"][class*="bottom-"],
 div[class*="fixed"][class*="bottom-"]:not(:has(a[href*="wa.me"])) {
   display: none !important;
   opacity: 0 !important;
