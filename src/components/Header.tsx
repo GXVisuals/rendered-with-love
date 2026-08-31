@@ -32,6 +32,13 @@ const Header = () => {
     }
   };
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (location.pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
     document.documentElement.lang = lng;
@@ -39,16 +46,18 @@ const Header = () => {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-background/90 backdrop-blur-md border-b border-border" : "bg-transparent"}`}>
-        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-background/90 backdrop-blur-md border-b border-border py-3" : "bg-transparent py-5"}`}>
+        <div className="container mx-auto px-6 flex items-center justify-between">
 
-          <Link to="/" className="flex items-center gap-2">
-            <img src="/logo.png" alt="Logo" className="h-8 w-auto" />
+          {/* Logo / Brand */}
+          <Link to="/" onClick={handleLogoClick} className="flex items-center gap-2">
+            <img src="/logo.png" alt="GX Visuals Logo" className="h-8 w-auto" />
             <span className="font-display text-2xl font-semibold text-foreground tracking-tight hidden sm:inline-block">
               GX<span className="text-primary">VISUALS</span>
             </span>
           </Link>
 
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             <NavLink
               to="/portfolio"
@@ -80,6 +89,7 @@ const Header = () => {
             </a>
           </nav>
 
+          {/* Controls & Social Links */}
           <div className="flex items-center gap-4">
             <a
               href="tel:+35795115014"
@@ -89,6 +99,7 @@ const Header = () => {
               <span>+357 95 115014</span>
             </a>
 
+            {/* Language Switcher */}
             <div className="flex items-center gap-2 px-3 border-x border-border/50">
               {['en', 'el'].map((lng) => (
                 <button
@@ -101,12 +112,14 @@ const Header = () => {
               ))}
             </div>
 
+            {/* Social Icons */}
             <div className="hidden md:flex items-center gap-3">
               <a
                 href="https://instagram.com/gxvisuals.3drendering/"
                 target="_blank"
                 rel="noreferrer"
-                className="text-muted-foreground hover:text-primary"
+                className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="Instagram"
               >
                 <Instagram size={18} />
               </a>
@@ -114,7 +127,8 @@ const Header = () => {
                 href="https://wa.me/35795115014"
                 target="_blank"
                 rel="noreferrer"
-                className="text-muted-foreground hover:text-primary"
+                className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="WhatsApp"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-10.4 8.38 8.38 0 0 1 3.8.9L21 4.2Z" />
@@ -122,12 +136,14 @@ const Header = () => {
               </a>
             </div>
 
+            {/* CTA Button */}
             <Button asChild variant="outline" size="sm" className="hidden lg:inline-flex">
               <a href="#contact" onClick={(e) => handleNavClick(e, "contact")}>
                 {t('nav_quote', 'Get a Free Quote Today')}
               </a>
             </Button>
 
+            {/* Mobile Hamburger Toggle */}
             <button
               className="md:hidden text-foreground hover:text-primary transition-colors p-1"
               onClick={() => setMobileOpen((prev) => !prev)}
@@ -180,10 +196,10 @@ const Header = () => {
           </div>
 
           <div className="flex items-center gap-5 mt-2">
-            <a href="https://instagram.com/gxvisuals.3drendering/" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary">
+            <a href="https://instagram.com/gxvisuals.3drendering/" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
               <Instagram size={22} />
             </a>
-            <a href="https://wa.me/35795115014" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary">
+            <a href="https://wa.me/35795115014" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-10.4 8.38 8.38 0 0 1 3.8.9L21 4.2Z" />
               </svg>
